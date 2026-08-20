@@ -1,0 +1,100 @@
+import React, { useState } from "react";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+
+export default function Contador() {
+  const [contagem, setContagem] = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Contagem Atual:</Text>
+      <Text style={styles.numero}>{contagem}</Text>
+
+      <View style={styles.areaBotoes}>
+        {/* Botão Incrementar */}
+        <TouchableOpacity 
+          style={[styles.botao, styles.botaoIncrementar]} 
+          onPress={() => setContagem(contagem + 1)}
+        >
+          <Text style={styles.textoBotao}>+1</Text>
+        </TouchableOpacity>
+
+        {/* Botão Decrementar */}
+        <TouchableOpacity 
+          style={[styles.botao, styles.botaoDecrementar]} 
+          onPress={() => {
+            if (contagem > 0) {
+              setContagem(contagem - 1);
+            }
+          }}
+        >
+          <Text style={styles.textoBotao}>-1</Text>
+        </TouchableOpacity>
+
+        {/* Botão Zerar */}
+        <TouchableOpacity 
+          style={[styles.botao, styles.botaoZerar]} 
+          onPress={() => setContagem(0)}
+        >
+          <Text style={styles.textoBotao}>Zerar</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffffff"
+  },
+  titulo: {
+    fontSize: 20,
+    color: "#383535",
+    marginBottom: 10,
+    fontWeight: "500",
+  },
+  numero: {
+    fontSize: 48,
+    fontWeight: "bold",
+    color: "#02cff3",
+    marginBottom: 30,
+  },
+  areaBotoes: {
+    flexDirection: "row",
+    gap: 15,
+  },
+  // Estilo base para todos os botões
+  botao: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 10, // Bordas arredondadas modernas
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: 90,
+    // Sombra para Android
+    elevation: 3,
+    // Sombra para iOS
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  // Cores customizadas por botão
+  botaoIncrementar: {
+    backgroundColor: "#02cff3",
+  },
+  botaoDecrementar: {
+    backgroundColor: "#ff9500",
+  },
+  botaoZerar: {
+    backgroundColor: "#ff3b30",
+  },
+  // Estilo do texto interno
+  textoBotao: {
+    color: "#ffffff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+});

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import JogoDaVelha from "./JogoDaVelha";
 import {
   StyleSheet,
   Text,
@@ -54,7 +55,9 @@ export default function App() {
 
         <View style={{ height: 500 }} />
       </View>
+      <JogoDaVelha />
     </ScrollView>
+    
   );
 }
 
